@@ -15,8 +15,8 @@ export interface MenuItem {
 }
 
 @Component({
-  selector: 'app-drawer-layout',
   standalone: true,
+  selector: 'app-drawer-layout',
   imports: [CommonModule, ThemeToggleComponent],
   template: `
     <div class="drawer lg:drawer-open">

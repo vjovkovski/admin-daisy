@@ -5,10 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { DaisyUIThemeService } from 'app/services/daisyui-theme.service';
 
 @Component({
-  selector: 'app-theme-switcher',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
-  template: `
+    selector: 'app-theme-switcher',
+    imports: [CommonModule, FormsModule],
+    template: `
     <div class="dropdown dropdown-end">
       <!-- Theme Switcher Trigger -->
       <div
@@ -329,8 +328,8 @@ import { DaisyUIThemeService } from 'app/services/daisyui-theme.service';
       </div>
     </div>
   `,
-  styles: [
-    `
+    styles: [
+        `
       .dropdown-content {
         animation: fadeIn 0.2s ease-out;
       }
@@ -374,7 +373,7 @@ import { DaisyUIThemeService } from 'app/services/daisyui-theme.service';
         transform: translateY(-1px);
       }
     `,
-  ],
+    ]
 })
 export class ThemeSwitcherComponent {
   themeService = inject(DaisyUIThemeService);

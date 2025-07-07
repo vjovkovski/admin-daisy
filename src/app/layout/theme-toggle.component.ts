@@ -9,8 +9,8 @@ import {
 
 @Component({
   selector: 'app-theme-toggle',
-  standalone: true,
   imports: [CommonModule],
+  standalone: true,
   template: `
     <label class="swap swap-rotate">
       <!-- this hidden checkbox controls the state -->
@@ -39,126 +39,6 @@ import {
       </svg>
     </label>
   `,
-  // template: `
-  //   <div class="dropdown dropdown-end">
-  //     <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
-  //       <svg
-  //         class="w-5 h-5"
-  //         fill="none"
-  //         stroke="currentColor"
-  //         viewBox="0 0 24 24"
-  //         [attr.aria-label]="
-  //           'Current theme: ' + themeService.getCurrentThemeObject()?.name
-  //         "
-  //       >
-  //         @if (themeService.getCurrentThemeObject()?.type === 'light') {
-  //         <!-- Sun icon -->
-  //         <path
-  //           stroke-linecap="round"
-  //           stroke-linejoin="round"
-  //           stroke-width="2"
-  //           d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-  //         />
-  //         } @else {
-  //         <!-- Moon icon -->
-  //         <path
-  //           stroke-linecap="round"
-  //           stroke-linejoin="round"
-  //           stroke-width="2"
-  //           d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-  //         />
-  //         }
-  //       </svg>
-  //     </div>
-  //     <ul
-  //       tabindex="0"
-  //       class="dropdown-content menu bg-base-100 rounded-box z-[1] w-40 p-2 shadow-2xl border border-base-300"
-  //     >
-  //       <li>
-  //         <button
-  //           (click)="themeService.setThemeByType('light')"
-  //           [class.active]="
-  //             themeService.getCurrentThemeObject()?.type === 'light'
-  //           "
-  //           class="flex items-center gap-2"
-  //         >
-  //           <svg
-  //             class="w-4 h-4"
-  //             fill="none"
-  //             stroke="currentColor"
-  //             viewBox="0 0 24 24"
-  //           >
-  //             <path
-  //               stroke-linecap="round"
-  //               stroke-linejoin="round"
-  //               stroke-width="2"
-  //               d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-  //             />
-  //           </svg>
-  //           Light
-  //         </button>
-  //       </li>
-  //       <li>
-  //         <button
-  //           (click)="themeService.setThemeByType('dark')"
-  //           [class.active]="
-  //             themeService.getCurrentThemeObject()?.type === 'dark'
-  //           "
-  //           class="flex items-center gap-2"
-  //         >
-  //           <svg
-  //             class="w-4 h-4"
-  //             fill="none"
-  //             stroke="currentColor"
-  //             viewBox="0 0 24 24"
-  //           >
-  //             <path
-  //               stroke-linecap="round"
-  //               stroke-linejoin="round"
-  //               stroke-width="2"
-  //               d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-  //             />
-  //           </svg>
-  //           Dark
-  //         </button>
-  //       </li>
-  //       <!-- <li>
-  //         <button
-  //           (click)="themeService.setThemeBySystemPreference()"
-  //           [class.active]="themeService.useSystemPreference()"
-  //           class="flex items-center gap-2"
-  //         >
-  //           <svg
-  //             class="w-4 h-4"
-  //             fill="none"
-  //             stroke="currentColor"
-  //             viewBox="0 0 24 24"
-  //           >
-  //             <path
-  //               stroke-linecap="round"
-  //               stroke-linejoin="round"
-  //               stroke-width="2"
-  //               d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-  //             />
-  //           </svg>
-  //           System
-  //         </button>
-  //       </li> -->
-  //     </ul>
-  //   </div>
-  // `,
-  // styles: [
-  //   `
-  //     .dropdown-content {
-  //       border: 1px solid hsl(var(--bc) / 0.1);
-  //     }
-
-  //     .menu li > button.active {
-  //       background-color: hsl(var(--p) / 0.1);
-  //       color: hsl(var(--pc));
-  //     }
-  //   `,
-  // ],
 })
 export class ThemeToggleComponent {
   themeService = inject(DaisyUIThemeService);
