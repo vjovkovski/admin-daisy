@@ -6,10 +6,13 @@ import {
 } from './layout/drawer-layout.component';
 import { RouterOutlet } from '@angular/router';
 import { environment } from '../environments/environment';
+
+import { NgIcon } from '@ng-icons/core';
+import { ThemeToggleComponent } from './layout/theme-toggle.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [DrawerLayoutComponent, RouterOutlet],
+  imports: [DrawerLayoutComponent, RouterOutlet, NgIcon, ThemeToggleComponent],
   template: `
     <app-drawer-layout
       [title]="appName()"
@@ -17,6 +20,23 @@ import { environment } from '../environments/environment';
       (menuItemSelected)="onMenuItemSelected($event)"
       (drawerStateChanged)="onDrawerStateChanged($event)"
     >
+      <div slot="navbar-header" class="flex-1">
+        <!-- <h1 class="text-2xl font-bold">{{ appName() }}</h1>
+        <p class="text-sm text-base-content/70">
+          {{ companyName() }}
+        </p> -->
+      </div>
+
+      <div slot="navbar-dropdown" class="p-1">
+        <ul class="menu menu-compact">
+          <li>
+            <a routerLink="/logout" class="flex items-center">
+              <ng-icon name="heroArrowRightOnRectangle"></ng-icon>
+              Logout
+            </a>
+          </li>
+        </ul>
+      </div>
       <!-- Main content -->
       <div class="space-y-6">
         <router-outlet></router-outlet>
@@ -24,9 +44,10 @@ import { environment } from '../environments/environment';
 
       <!-- Sidebar footer content -->
       <div slot="sidebar-footer" class="text-center">
-        <!-- <p class="text-sm text-base-content/70">
+        <app-theme-toggle class="mt-2"></app-theme-toggle>
+        <p class="text-sm text-base-content/70">
           © {{ year() }} {{ companyName() }}
-        </p> -->
+        </p>
       </div>
     </app-drawer-layout>
   `,
@@ -39,24 +60,25 @@ export class AppComponent {
     {
       id: 'dashboard',
       label: 'Dashboard',
-      icon: 'dashboard',
+      icon: 'heroSquares2x2',
       route: '/dashboard',
     },
+    { id: 'home', label: 'Home', icon: 'heroHome', route: '/home' },
+
+    // {
+    //   id: 'audits',
+    //   label: 'Audits',
+    //   icon: 'audits',
+    //   route: '/audits',
+    //   badge: 5, // Example badge count, replace with dynamic value as needed
+    // },
+    { id: 'users', label: 'Users', icon: 'heroUser', route: '/users' },
     {
-      id: 'audits',
-      label: 'Audits',
-      icon: 'audits',
-      route: '/audits',
-      badge: 5, // Example badge count, replace with dynamic value as needed
+      id: 'settings',
+      label: 'Settings',
+      icon: 'heroCog6Tooth',
+      route: '/settings',
     },
-    { id: 'users', label: 'Users', icon: 'users', route: '/users' },
-    {
-      id: 'analytics',
-      label: 'Analytics',
-      icon: 'analytics',
-      route: '/analytics',
-    },
-    { id: 'settings', label: 'Settings', icon: 'settings', route: '/settings' },
   ];
 
   onMenuItemSelected(item: MenuItem): void {

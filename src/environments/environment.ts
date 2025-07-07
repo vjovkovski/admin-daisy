@@ -4,10 +4,9 @@
 
 export const environment = {
   production: false,
-  appName: 'NUPIC Document Management',
-  companyName: 'NUPIC',
+  appName: 'Application Name', // Change this to your application name
+  companyName: 'Company Name', // Change this to your company name
   baseUrl: 'https://localhost:5001', // Change this to the address of your backend API if different from frontend address
-  apiUrl: 'https://localhost:5001/api', // Change this to the address of your backend API if different from frontend address
 };
 
 /*

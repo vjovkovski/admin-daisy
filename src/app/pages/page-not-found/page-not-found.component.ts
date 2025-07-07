@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   templateUrl: './page-not-found.component.html',
   styleUrl: './page-not-found.component.css',
 })
-export class PageNotFoundComponent {
+export class PageNotFound {
   @Output() goBack = new EventEmitter<void>();
   @Output() goHome = new EventEmitter<void>();
   @Output() contactSupport = new EventEmitter<void>();

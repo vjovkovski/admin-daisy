@@ -1,8 +1,7 @@
 // src/app/components/drawer-layout/drawer-layout.component.ts
 import { Component, Input, Output, EventEmitter, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ThemeSwitcherComponent } from 'app/components/theme-switcher/theme-switcher.component';
-import { ThemeToggleComponent } from './theme-toggle.component';
+import { NgIcon } from '@ng-icons/core';
 
 export interface MenuItem {
   id: string;
@@ -17,7 +16,7 @@ export interface MenuItem {
 @Component({
   standalone: true,
   selector: 'app-drawer-layout',
-  imports: [CommonModule, ThemeToggleComponent],
+  imports: [CommonModule, NgIcon],
   template: `
     <div class="drawer lg:drawer-open">
       <!-- Drawer toggle checkbox -->
@@ -33,6 +32,10 @@ export interface MenuItem {
       <!-- Main content area -->
       <div class="drawer-content flex flex-col">
         <!-- Header/Navbar -->
+        <div class="navbar bg-base-100 hidden lg:flex">
+          <ng-content select="[slot=navbar-header]"></ng-content>
+        </div>
+
         <div
           class="navbar bg-base-100 shadow-sm border-b border-base-300 lg:hidden"
         >
@@ -63,7 +66,27 @@ export interface MenuItem {
           </div>
 
           <div class="navbar-end">
-            <app-theme-toggle></app-theme-toggle>
+            <div class="flex-none">
+              <div class="dropdown">
+                <div
+                  tabindex="0"
+                  role="button"
+                  class="btn btn-ghost btn-circle avatar avatar-placeholder"
+                >
+                  <div
+                    class="bg-primary text-neutral-content w-10 rounded-full"
+                  >
+                    <span class="text-xl">E</span>
+                  </div>
+                </div>
+                <ul
+                  tabindex="0"
+                  class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-1 p-1 shadow"
+                >
+                  <ng-content select="[slot=navbar-dropdown]"></ng-content>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -71,9 +94,6 @@ export interface MenuItem {
         <main class="flex-1 p-4 lg:p-8">
           <div class="max-w-7xl mx-auto">
             <!-- Desktop theme toggle -->
-            <div class="hidden lg:flex justify-end mb-4">
-              <app-theme-toggle></app-theme-toggle>
-            </div>
 
             <!-- Content slot -->
             <ng-content></ng-content>
@@ -91,12 +111,14 @@ export interface MenuItem {
         ></label>
 
         <aside
-          class="bg-base-200 text-base-content min-h-full w-80 flex flex-col"
+          class="bg-base-200 text-base-content min-h-full w-55 flex flex-col"
         >
           <!-- Sidebar header -->
           <div class="p-4 border-b border-base-300">
             <div class="flex items-center justify-between">
-              <h2 class="text-lg font-semibold">{{ sidebarTitle || title }}</h2>
+              <h2 class="text-lg font-semibold">
+                {{ sidebarTitle || title }}
+              </h2>
 
               <button
                 class="btn btn-sm btn-ghost btn-circle lg:hidden"
@@ -133,7 +155,8 @@ export interface MenuItem {
                     (click)="toggleSubmenu(item.id)"
                   >
                     @if (item.icon) {
-                    <i [class]="item.icon"></i>
+                    <ng-icon [name]="item.icon" />
+                    <!-- <i [class]="item.icon"></i> -->
                     }
                     {{ item.label }}
                   </summary>
@@ -146,7 +169,8 @@ export interface MenuItem {
                         class="flex items-center gap-3"
                       >
                         @if (child.icon) {
-                        <i [class]="child.icon"></i>
+                        <ng-icon [name]="child.icon" />
+                        <!-- <i [class]="child.icon"></i> -->
                         }
                         {{ child.label }}
                       </a>
@@ -162,7 +186,9 @@ export interface MenuItem {
                   class="flex items-center gap-3"
                 >
                   @if (item.icon) {
-                  <i [class]="item.icon"></i>
+                  <ng-icon [name]="item.icon" />
+                  <!-- <i [class]="item.icon"></i> -->
+
                   }
                   {{ item.label }}
                 </a>
@@ -174,9 +200,9 @@ export interface MenuItem {
 
           <!-- Sidebar footer -->
           <div class="p-4 border-t border-base-300">
-            <div class="flex items-center justify-between">
+            <!-- <div class="flex items-center justify-between">
               <button class="btn btn-ghost btn-error">Logout</button>
-            </div>
+            </div> -->
             <!-- <app-theme-toggle /> -->
             <ng-content select="[slot=sidebar-footer]"></ng-content>
           </div>

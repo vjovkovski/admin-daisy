@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import "tailwindcss";
 @plugin "daisyui" {
-  themes: corporate --default, dark --prefersdark;
+  themes: cupcake --default, dark --prefersdark;
 }
 
 /* @plugin "daisyui" {
@@ -9,13 +9,13 @@
 } */
 
 /* Root theme variables */
-/* :root {
-  color-scheme: light;
+:root {
+  color-scheme: cupcake;
 }
 
 :root.dark {
   color-scheme: dark;
-} */
+}
 
 /* Smooth theme transitions */
 html {
